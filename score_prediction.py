@@ -58,9 +58,7 @@ for scorer in range(10):
     second_goal_scorer = input("Second Goal Scorer?  ").lower()
     scorer_list.append(second_goal_scorer)
     again = input("Again y/n?  ")
-    print()
-    if again == "n":
-        break
+    break
 
 # norwich dictionary
 norwich_dict = {
@@ -73,44 +71,3 @@ norwich_dict = {
 # convert to json
 with open('gw_1_norwich.json', 'w') as ngw:
     json.dump(norwich_dict, ngw)
-
-
-# ### calculator
-# # result
-# if result == norwich_result:
-#     result_score = 1
-# else:
-#     result_score = 0 
-
-# # home goals
-# if home_goals == norwich_home_goals:
-#     home_score = 1
-# else:
-#     home_score = 0   
-
-# # away goals
-# if away_goals == norwich_away_goals:
-#     away_score = 1
-# else:
-#     away_score = 0
-    
-# # goal scorer
-# if goal_scorer == norwich_goal_scorer:
-#     scorer_score = 1
-# else:
-#     scorer_score = 0
-
-# # perfect score
-# if home_score + away_score == 2:
-#     perfect_score = 3
-# else:
-#     perfect_score = 0
-
-# # score
-# player_score = perfect_score + result_score + scorer_score
-# print()
-# if player_score == 1:
-#     print(f"You got {player_score} point.")
-# else:
-#     print(f"You got {player_score} points.")
-
