@@ -5,7 +5,8 @@ print("Add a players prediction.")
 print()
 player_list = []
 
-for player in range(100): 
+again = "y"
+while again == "y":
     name = input("Player name?  ").lower()
     result = input("Win, Lose or Draw?  ").lower()
     home_goals = input("Home goals?  ")
@@ -14,7 +15,6 @@ for player in range(100):
     away_goals = int(away_goals)
     goal_scorer = input("Goal Scorer?  ").lower()
 
-    print()
     again = input("Again y/n?  ")
     print()
 
@@ -31,14 +31,12 @@ for player in range(100):
 
     
     if again == "n":
-        print(player_list)
         with open('gw_1_player.json', 'w', encoding = "utf-8") as pgw:
             json.dump(player_list, pgw)
         break
 
 
 ### norwich inputs
-print()
 print("What was the actual score?")
 print()
 norwich_result = input("Result? Win, lose or draw.  ")
@@ -52,13 +50,19 @@ for scorer in range(10):
     first_goal_scorer = input("First Goal Scorer or No Goal Scorer?  ").lower()
     scorer_list.append(first_goal_scorer)
     again = input("Again y/n?  ")
-    print()
     if again == "n":
         break
     second_goal_scorer = input("Second Goal Scorer?  ").lower()
     scorer_list.append(second_goal_scorer)
-    again = input("Again y/n?  ")
-    break
+    again = input("Another goal scorer? y/n.  ")
+    if again == "n":
+        break
+    # TODO after y on next_goal_scorer it loops back to first but I want it to loop back onto itself to keep the words.
+    next_goal_scorer = input("Next Goal Scorer?  ").lower()
+    scorer_list.append(next_goal_scorer)
+    again = input("Another goal scorer? y/n.  ")
+    if again == "n":
+        break
 
 # norwich dictionary
 norwich_dict = {
