@@ -4,18 +4,18 @@ import json
 print("Add a players prediction.")
 print()
 player_list = []
-
 again = "y"
 while again == "y":
     name = input("Player name?  ").lower()
     result = input("Win, Lose or Draw?  ").lower()
     home_goals = input("Home goals?  ")
     home_goals = int(home_goals)
+    #valid_int(home_goals)
     away_goals = input("Away goals?  ")
     away_goals = int(away_goals)
     goal_scorer = input("Goal Scorer?  ").lower()
 
-    again = input("Again y/n?  ")
+    again = input("Another Player? y/n  ")
     print()
 
     player_dict = {
@@ -32,7 +32,7 @@ while again == "y":
     
     if again == "n":
         with open('gw_1_player.json', 'w', encoding = "utf-8") as pgw:
-            json.dump(player_list, pgw)
+            json.dump(player_list, pgw, indent = 2)
         break
 
 
@@ -49,7 +49,7 @@ scorer_list = []
 for scorer in range(10): 
     first_goal_scorer = input("First Goal Scorer or No Goal Scorer?  ").lower()
     scorer_list.append(first_goal_scorer)
-    again = input("Again y/n?  ")
+    again = input("Another goal scorer? y/n  ")
     if again == "n":
         break
     second_goal_scorer = input("Second Goal Scorer?  ").lower()
@@ -74,4 +74,5 @@ norwich_dict = {
 
 # convert to json
 with open('gw_1_norwich.json', 'w') as ngw:
-    json.dump(norwich_dict, ngw)
+    json.dump(norwich_dict, ngw, indent = 2)
+
