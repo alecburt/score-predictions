@@ -1,11 +1,15 @@
 import json
 
+round = 1
+print(f"Round {round} results!")
+print()
+
 # Open and read the norwich JSON file
-with open('gw_1_norwich.json', 'r') as norwich:
+with open(f'round_{round}_norwich.json', 'r') as norwich:
     norwich_data = json.load(norwich)
 
 # Open and read the player JSON file
-with open('gw_1_player.json', 'r') as player_json:
+with open(f'round_{round}_player.json', 'r') as player_json:
     player_data = json.load(player_json)
     for player in player_data:
 
@@ -54,9 +58,11 @@ with open('gw_1_player.json', 'r') as player_json:
         name = player["name"]
         name = name.capitalize()
         player_score = perfect_score + result_score + scorer_score
+        
         if player_score == 1:
             print(f"{name} got {player_score} point.")
         else:
             print(f"{name} got {player_score} points.")
+print()
 
 
