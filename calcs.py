@@ -1,12 +1,13 @@
 import json
 
 round = 1
+print()
 print(f"Round {round} results!")
 print()
 
 # Open and read the norwich JSON file
-with open(f'round_{round}_norwich.json', 'r') as norwich:
-    norwich_data = json.load(norwich)
+with open(f'round_{round}_norwich.json', 'r') as norwich_json:
+    norwich_data = json.load(norwich_json)
 
 # Open and read the player JSON file
 with open(f'round_{round}_player.json', 'r') as player_json:
@@ -51,18 +52,23 @@ with open(f'round_{round}_player.json', 'r') as player_json:
         # perfect score
         if home_score + away_score == 2:
             perfect_score = 3
+            single_perfect_score = 1
         else:
             perfect_score = 0
+            single_perfect_score = 0
 
         ### total score
         name = player["name"]
         name = name.capitalize()
         player_score = perfect_score + result_score + scorer_score
         
-        if player_score == 1:
-            print(f"{name} got {player_score} point.")
-        else:
-            print(f"{name} got {player_score} points.")
+        table_dict = {
+            "player" : name,
+            "result" : result_score,
+            "scorer" : scorer_score,
+            "perfect" : single_perfect_score,
+            "Total" : player_score
+        }
+
+        print(table_dict)
 print()
-
-
