@@ -17,7 +17,7 @@ Round 2 etc. will add any new players, give a blank score to anyone who didn't p
 Player, Games Played, Result, Scorer, Perfect (this is worth 3 points) and Total.
 
 Future:
-Currently the JSON files are a bit of a mess all saving in the main folder I need to learn using Matplotlib or similar to tidy up the directories.
+Currently the JSON files are a bit of a mess all saving in the main folder I need to learn using Pathlib or similar to tidy up the directories.
 Create a table maybe in python first then look at plotly or similar for the graphics this will take some learning though.
 
 Problems:
