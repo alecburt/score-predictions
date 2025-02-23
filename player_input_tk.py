@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 from PIL import ImageTk, Image
 import json
 
@@ -70,7 +71,6 @@ scorer_label = Label(text = "Goal Scorer?", font = ('', 10))
 scorer_label.grid(row = 4, column = 4, sticky = 'W')
 
 # scorers
-scorer_checkbox = "" #### needed?
 scorer_list = ["No Goalscorer", "Tonto", "Sargent", "Slimane", "Nunez", "Cordoba", "Gordon", "Springett", "Gibbs", "Crnac", "McLean", "Hernandez", "Hills", "Forson",
         "Duffy", "Sorensen", "Chrisene", "Myles", "Forsyth", "Sainz", "Doyle", "Marcondes", "Dobbin", "Jurasek", "Fisher", "Schwartau", "Stacey"
 ]
@@ -80,6 +80,7 @@ scorer_combo.grid(row = 5, column = 4, sticky = 'NSEW')
 scorer_combo.set("No Goalscorer")
 
 player_list = []
+
 def player_save_listbox():
     player_name = name_var.get()
     name_listbox.insert(0, player_name)
@@ -139,6 +140,8 @@ scorer_listbox = Listbox(root)
 scorer_listbox.grid(row = 8, column = 4)
 
 def player_submit_all():
+    messagebox.askquestion("", "Are all the players in?")
+    messagebox.showinfo("", "Good Job!")
     current_round = round_var.get()
 
     # convert to json
