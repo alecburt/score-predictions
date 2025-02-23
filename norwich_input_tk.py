@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 from PIL import ImageTk, Image
 import json
 
@@ -119,6 +120,7 @@ sixth_scorer_combo.set("")
 
 # save the data to variable on submit button click
 def norwich_save_data():
+    messagebox.showinfo("", "Good Job!")
     current_round = round_var.get()
     norwich_home_goals = home_goals_var.get()
     norwich_away_goals = away_goals_var.get()
@@ -147,7 +149,6 @@ def norwich_save_data():
     # convert to json
     with open(f'round_{current_round}_norwich.json', 'w') as ngw:
         json.dump(norwich_dict, ngw, indent = 2)
-
 
 ### buttons
 button_submit = Button(root, text = "Submit", command = norwich_save_data)
