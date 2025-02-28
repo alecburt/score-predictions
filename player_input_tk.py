@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import json
+from names import check_name
 
 # window
 root = Tk()
@@ -83,8 +84,10 @@ player_list = []
 
 def player_save_listbox():
     player_name = name_var.get()
-    name_listbox.insert(0, player_name)
-    player_name = player_name.lower()
+    team_name = check_name(player_name)
+    name_listbox.insert(0, team_name)
+    team_name = team_name.title()
+    
     player_win_lose_draw = wld_combo.get()
     wld_listbox.insert(0, player_win_lose_draw)
     player_win_lose_draw = player_win_lose_draw.lower()
@@ -99,14 +102,14 @@ def player_save_listbox():
     player_scorer = player_scorer.lower()
     
     player_dict = {
-        "name" : player_name,
+        "name" : team_name,
         "result" : player_win_lose_draw,
         "home_goals" : player_home_goals,
         "away_goals" : player_away_goals,
         "goal_scorer" : player_scorer,
         }
 
-    player_dict.update({"name": player_name,  "result": player_win_lose_draw, "home_goals": player_home_goals,  "away_goals": player_away_goals, "goal_scorer": player_scorer})
+    player_dict.update({"name": team_name,  "result": player_win_lose_draw, "home_goals": player_home_goals,  "away_goals": player_away_goals, "goal_scorer": player_scorer})
     player_list.append(player_dict)
 
 
