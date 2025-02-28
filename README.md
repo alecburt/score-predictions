@@ -16,10 +16,12 @@ Round 0 should be just empty curly brackets. When setting the round to 1 it will
 Round 2 etc. will add any new players, give a blank score to anyone who didn't play who has played before and tally up the following columns.
 Player, Games Played, Result, Scorer, Perfect (this is worth 3 points) and Total.
 
+The player names go through the check_name function if the name has already been registered I will be able to copy and paste a Twitter handle and it will format to the desired name or if un-registered it will save the Twitter handle as the team_name. It is functional but once I've used it a few times I think it will need to be made a bit more user friendly.
+
 Future:
 Currently the JSON files are a bit of a mess all saving in the main folder I need to learn using Pathlib or similar to tidy up the directories.
 Create a table maybe in python first then look at plotly or similar for the graphics this will take some learning though.
+I would like to learn more about OOP first but I believe eventually the set up will be better with a Player Class.
 
-Problems:
-I think the name is going to be a bit of a pain but in theory I can use either the X handle or facebook name as an input then have it change to a chosen team name like in fantasy football.
+
 
