@@ -1,7 +1,8 @@
 import json
+from names import check_name
 
 """ Update the round each game. For the first week a blank round 0 is needed with just empty curly brackets in JSON."""
-round = 5
+round = 4
 print()
 print(f"Round {round} results!")
 print()
@@ -67,10 +68,11 @@ for player in player_data:
 
     ### total score
     name = player["name"]
-    name = name.capitalize()
+    team_name = check_name(name)
+    #team_name = team_name.capitalize()
     player_score = perfect_score + result_score + scorer_score
     result_list = [games_played, result_score, scorer_score, single_perfect_score, player_score]
-    table_dict = {name: result_list}
+    table_dict = {team_name: result_list}
     this_round_data.update(table_dict)
 
 ### compare last week to this week.
@@ -125,4 +127,5 @@ with open(f'round_{round}_results.json', 'w') as ngw:
         json.dump(latest_scores, ngw, indent = 2)    
 
 # TODO I want to save the JSON files in seperate folders. 
-# TODO create a table
+# TODO create a table. Start with pretty table in python then plotly / matplotlib
+
