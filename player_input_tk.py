@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import json
-from names import check_name
+from names import format_name
 
 # window
 root = Tk()
@@ -84,7 +84,7 @@ player_list = []
 
 def player_save_listbox():
     player_name = name_var.get()
-    team_name = check_name(player_name)
+    team_name = format_name(player_name)
     name_listbox.insert(0, team_name)
     team_name = team_name.title()
     
@@ -157,3 +157,5 @@ button_submit.grid(row = 9, column = 0, sticky = 'NSEW')
 
 
 root.mainloop()
+
+
