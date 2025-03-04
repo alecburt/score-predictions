@@ -16,7 +16,8 @@ Round 0 should be just empty curly brackets. When setting the round to 1 it will
 Round 2 etc. will add any new players, give a blank score to anyone who didn't play who has played before and tally up the following columns.
 Player, Games Played, Result, Scorer, Perfect (this is worth 3 points) and Total.
 
-The player names go through the check_name function if the name has already been registered I will be able to copy and paste a Twitter handle and it will format to the desired name or if un-registered it will save the Twitter handle as the team_name. It is functional but once I've used it a few times I think it will need to be made a bit more user friendly.
+The player names go through the format_name function if the name is new it will prompt for the formatted name (currently in the terminal) and add to the formatted_names.json dictionary. 
+If the name is already in the dictionary it will continue and add the results as usual.
 
 Future:
 Currently the JSON files are a bit of a mess all saving in the main folder I need to learn using Pathlib or similar to tidy up the directories.
