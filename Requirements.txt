@@ -1,0 +1,10 @@
+Requirements
+
+json
+tkinter
+    ttk
+    messagebox
+pil
+    imagetk
+    image
+prettytable
