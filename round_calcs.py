@@ -2,7 +2,7 @@ import json
 from names import check_name
 
 """ Update the round each game. For the first week a blank round 0 is needed with just empty curly brackets in JSON."""
-round = 4
+round = 2
 print()
 print(f"Round {round} results!")
 print()
@@ -58,20 +58,22 @@ for player in player_data:
         if goal_scorer == norwich_goal_scorer:
             scorer_score = scorer_score + 1
             break
-    # perfect score
+    # correct score
     if home_score + away_score == 2:
-        perfect_score = 3
-        single_perfect_score = 1
+        correct_score = 3
+    else:
+        correct_score = 0
+    # perfect score 
+    if correct_score + result_score + scorer_score == 5:
+        perfect_score = 1
     else:
         perfect_score = 0
-        single_perfect_score = 0
 
     ### total score
     name = player["name"]
     team_name = check_name(name)
-    #team_name = team_name.capitalize()
-    player_score = perfect_score + result_score + scorer_score
-    result_list = [games_played, result_score, scorer_score, single_perfect_score, player_score]
+    player_score = correct_score + result_score + scorer_score
+    result_list = [games_played, correct_score, result_score, scorer_score, perfect_score, player_score]
     table_dict = {team_name: result_list}
     this_round_data.update(table_dict)
 
@@ -93,14 +95,14 @@ for player in this_round_data:
     if player not in last_round_data:
         new_player = player
         new_player = this_round_data[player]
-        new_player = [0, 0, 0, 0, 0]
+        new_player = [0, 0, 0, 0, 0, 0]
         all_players.update({player: new_player})
 
 # give 0 points for a player that didnt play
 for player in last_round_data:
     if player not in this_round_data:
         not_played = last_round_data[player]
-        not_played = [0, 0, 0, 0, 0]
+        not_played = [0, 0, 0, 0, 0, 0]
         this_round_data.update({player: not_played})
 
 # put all the players in alphabetical order.
@@ -115,7 +117,8 @@ for player in all_players_order:
         all_players_order[1] + this_round_order[1], 
         all_players_order[2] + this_round_order[2], 
         all_players_order[3] + this_round_order[3], 
-        all_players_order[4] + this_round_order[4]
+        all_players_order[4] + this_round_order[4],
+        all_players_order[5] + this_round_order[5]
         ]
     latest_scores.update({player: player_sum})
 
@@ -127,5 +130,4 @@ with open(f'round_{round}_results.json', 'w') as ngw:
         json.dump(latest_scores, ngw, indent = 2)    
 
 # TODO I want to save the JSON files in seperate folders. 
-# TODO create a table. Start with pretty table in python then plotly / matplotlib
 
