@@ -1,6 +1,7 @@
 import json
 from prettytable import PrettyTable 
 
+# set round to the latest results.json
 round = 2
 
 with open(f'round_{round}_results.json', 'r') as results_json:
@@ -10,14 +11,14 @@ with open(f'round_{round}_results.json', 'r') as results_json:
 sorted_table_data = sorted(table_data.items(), key=lambda x: x[1][5], reverse = True)    
 
 # create table
-score_prediction_table = PrettyTable(["Position", "Player", "Games Played", "Correct Score", "Correct Result", "Goalscorer", "Perfect", "Total"]) 
-  
+score_prediction_table = PrettyTable(["Position", "Player", "Games Played", "Correct Score", "Correct Result", "Goalscorer", "Perfect", "Total"])
+score_prediction_table.align["Player"] = "l" 
+
 # add rows
 index = 0 
 for player_score in sorted_table_data:
     index += 1
     sorted_player_list = [index, player_score[0], player_score[1][0], player_score[1][1], player_score[1][2], player_score[1][3], player_score[1][4], player_score[1][5]]
     score_prediction_table.add_row(sorted_player_list) 
-
-  
+ 
 print(score_prediction_table)
