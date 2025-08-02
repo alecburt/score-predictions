@@ -27,6 +27,29 @@ round_var = IntVar()
 round_entry = Entry(borderwidth = 2, textvariable = round_var)
 round_entry.grid(row = 2, column = 1, sticky = 'NSEW')
 
+# platform buttons
+platform_label = Label(text = "Which Platform?", font = ('', 10))
+platform_label.grid(row = 1, column = 2, sticky = 'W')
+
+which_platform = "WA"
+
+def platform_clicked():
+    platform = platform_var.get()
+    global which_platform
+    which_platform = platform
+    return which_platform
+
+platform_var = StringVar()
+
+wa_button = Radiobutton(root, text = "WA", variable = platform_var, value = "WA", command = platform_clicked)
+wa_button.grid(row = 2, column = 2)
+fb_button = Radiobutton(root, text = "FB", variable = platform_var, value = "FB", command = platform_clicked)
+fb_button.grid(row = 2, column = 3)
+x_button = Radiobutton(root, text = "X", variable = platform_var, value = "X", command = platform_clicked)
+x_button.grid(row = 2, column = 4)
+
+platform_var.set("WA")
+
 # space
 space = Label(text = "")
 space.grid(row = 3, column = 0, columnspan = 5)
@@ -72,8 +95,8 @@ scorer_label = Label(text = "Goal Scorer?", font = ('', 10))
 scorer_label.grid(row = 4, column = 4, sticky = 'W')
 
 # scorers
-scorer_list = ["No Goalscorer", "Tonto", "Sargent", "Slimane", "Nunez", "Cordoba", "Gordon", "Springett", "Gibbs", "Crnac", "McLean", "Hernandez", "Hills", "Forson",
-        "Duffy", "Sorensen", "Chrisene", "Myles", "Forsyth", "Sainz", "Doyle", "Marcondes", "Dobbin", "Jurasek", "Fisher", "Schwartau", "Stacey"
+scorer_list = ["No Goalscorer", "Tonto", "Sargent", "Crnac", "Schwartau", "Kvistgaarden", "Jurasek", "Nunez", "Gibbs", "Marcondes", "McLean", "Wright", "Forson",
+        "Duffy", "Cordoba", "Chrisene", "Darling", "Medic", "McConville", "Fisher", "Stacey", "Forsyth", "Aboh", "Myles", "Springett", "Tomkinson", "Hills", "Kovacevic"
 ]
 
 scorer_combo = ttk.Combobox(root, values = scorer_list, state = "readonly")
@@ -107,9 +130,10 @@ def player_save_listbox():
         "home_goals" : player_home_goals,
         "away_goals" : player_away_goals,
         "goal_scorer" : player_scorer,
+        "platform" : which_platform,
         }
 
-    player_dict.update({"name": team_name,  "result": player_win_lose_draw, "home_goals": player_home_goals,  "away_goals": player_away_goals, "goal_scorer": player_scorer})
+    player_dict.update({"name": team_name,  "result": player_win_lose_draw, "home_goals": player_home_goals,  "away_goals": player_away_goals, "goal_scorer": player_scorer, "platform": which_platform})
     player_list.append(player_dict)
 
 
@@ -155,7 +179,6 @@ def player_submit_all():
 button_submit = Button(root, text = "Submit All", command = player_submit_all)
 button_submit.grid(row = 9, column = 0, sticky = 'NSEW')
 
+# TODO make it so i can add to an existing json so that i can fill out in stages rather than all at once, i think currently i replace.
 
 root.mainloop()
-
-
